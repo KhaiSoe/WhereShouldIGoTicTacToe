@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Where Should I Go &#8230; Tic Tac Toe?</string>
+    <string name="splash_name">Where Should I Go &#8230; \nTic Tac Toe?</string>
+    <string name="player1Win">Yay!!! \nPlayer 1 wins the game! \nPlay again?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="player2Win">"Yay!!! \nPlayer 2 wins the game! \nPlay again?</string>
+    <string name="congrats">Congratulations! \nDo you want to play again?</string>
+    <string name="player1Symbol">X</string>
+    <string name="player2">Y</string>
+    <string name="rules">RULES</string>
+    <string name="tie">It is a tie! \nPlay again?</string>
+    <string name="rule_text">In Tic-Tac-Toe, two players try to line up three symbols in a vertical, horizontal or
+        diagonal row.
+        \nPlayer One color is Yellow (X). Player Two color is Blue Gray (O).
+        \nEnjoy~
+    </string>
+    <string name="play">PLAY</string>
+    <string name="player2Symbol">O</string>
+
+
+</resources>
