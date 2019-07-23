@@ -8,7 +8,7 @@ Or you can also play the game online or as a mobile app download.
 This app is for people to play with their friends to pass time and requires no Wi-Fi access.
 
 ## Rules
-------
+
 This app requires two players. The first player is Player One. Player One's color is yellow. 
 The second player is Player Two. Player Two's color is blue gray.
 Each player competes against each other to line up three same-colored blocks in a vertical, horizontal or diagonal row.
