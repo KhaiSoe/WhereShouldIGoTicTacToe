@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
             startActivity(Intent(this@SplashActivity, RulesActivity::class.java))
             finish()
-        }, 3000)
+        }, 2000)
     }
 
     private fun startAnimation() {
