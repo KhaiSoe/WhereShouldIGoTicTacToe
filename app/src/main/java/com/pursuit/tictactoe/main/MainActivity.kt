@@ -1,4 +1,4 @@
-package com.pursuit.tictactoe
+package com.pursuit.tictactoe.main
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -11,9 +11,18 @@ import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
+import com.pursuit.tictactoe.R
+import com.pursuit.tictactoe.results.Result2Activity
+import com.pursuit.tictactoe.results.ResultActivity
+import com.pursuit.tictactoe.results.TieActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+
+    var player1 = ArrayList<Int>()
+    var player2 = ArrayList<Int>()
+    var activePlayer = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         exit.setOnClickListener { finishAffinity() }
-
 
     }
 
@@ -39,16 +47,11 @@ class MainActivity : AppCompatActivity() {
             R.id.button7 -> cellID = 7
             R.id.button8 -> cellID = 8
             R.id.button9 -> cellID = 9
-
         }
 
         playGame(cellID, buSelected)
 
     }
-
-    var player1 = ArrayList<Int>()
-    var player2 = ArrayList<Int>()
-    var activePlayer = 1
 
     @SuppressLint("ResourceAsColor")
     private fun playGame(cellID: Int, buSelected: Button) {
@@ -199,7 +202,6 @@ class MainActivity : AppCompatActivity() {
             winner = 3
         }
 
-
         if (winner != -1) {
             when (winner) {
                 1 -> startActivity(Intent(this@MainActivity, ResultActivity::class.java))
@@ -232,36 +234,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun autoPlay() {
-        val emptyCells = ArrayList<Int>()
-        for (cellID in 1..9) {
-            if (!(player1.contains(cellID) || player2.contains(cellID))) {
-                emptyCells.add(cellID)
+
+            val emptyCells = ArrayList<Int>()
+            for (cellId in 1..9) {
+                if (player1.contains(cellId) || player2.contains(cellId))
+                {}
+                else
+                {
+                    emptyCells.add(cellId)
+                }
             }
+
+            val r = java.util.Random()
+            val randomIndex = r.nextInt(emptyCells.size-0)+0
+            val cellId = emptyCells[randomIndex]
+
+            val buSelect:Button?
+        buSelect = when(cellId) {
+            1 -> button1
+            2 -> button2
+            3 -> button3
+            4 -> button4
+            5 -> button5
+            6 -> button6
+            7 -> button7
+            8 -> button8
+            9 -> button9
+            else -> button1
         }
-
-        val r = java.util.Random()
-        val randIndex = r.nextInt(emptyCells.size - 0) + 0
-        val cellID = emptyCells[randIndex]
-
-        var buSelected: Button
-        when (cellID) {
-            1 -> buSelected = button1
-            2 -> buSelected = button2
-            3 -> buSelected = button3
-            4 -> buSelected = button4
-            5 -> buSelected = button5
-            6 -> buSelected = button6
-            7 -> buSelected = button7
-            8 -> buSelected = button8
-            9 -> buSelected = button9
-            else -> buSelected = button1
-
+            playGame(cellId,buSelect)
         }
-
-        playGame(cellID, buSelected)
-
-    }
-
 
 }
 

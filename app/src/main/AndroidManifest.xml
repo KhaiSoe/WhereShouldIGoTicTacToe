@@ -9,13 +9,13 @@
             android:roundIcon="@drawable/x"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".TieActivity">
+        <activity android:name=".results.TieActivity">
         </activity>
         <activity android:name=".RulesActivity">
         </activity>
-        <activity android:name=".Result2Activity">
+        <activity android:name=".results.Result2Activity">
         </activity>
-        <activity android:name=".ResultActivity">
+        <activity android:name=".results.ResultActivity">
         </activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.MainActivity">
         </activity>
     </application>
 
