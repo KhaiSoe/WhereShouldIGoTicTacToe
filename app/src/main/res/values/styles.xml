@@ -23,6 +23,10 @@
         <item name="android:textSize">40sp</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/rules</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
     </style>
 
     <style name="ruleBodyStyle" parent="TextAppearance.AppCompat">
@@ -33,7 +37,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/rule_text</item>
-        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
     </style>
 
     <style name="playerWin" parent="TextAppearance.AppCompat">
@@ -51,9 +55,9 @@
     <style name="buttonStyle" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:textSize">24sp</item>
-        <item name="android:padding">8dp</item>
-        <item name="android:bottomRightRadius">8dp</item>
-        <item name="android:bottomLeftRadius">9dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:bottomRightRadius">4dp</item>
+        <item name="android:bottomLeftRadius">5dp</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textStyle">bold</item>
@@ -86,6 +90,13 @@
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:text">@string/No</item>
         <item name="android:background">@color/colorAccent</item>
+
+    </style>
+
+    <style name="msgText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/colorAccent</item>
 
     </style>
 
