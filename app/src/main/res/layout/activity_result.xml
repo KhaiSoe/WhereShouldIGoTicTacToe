@@ -19,20 +19,15 @@
 
     <TextView
             android:id="@+id/congrats_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/win"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="16dp"
             style="@style/playerWin"
             android:text="@string/player1Win"
     />
 
     <Button
             android:id="@+id/yes1Btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/congrats_msg"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -44,8 +39,6 @@
 
     <Button
             android:id="@+id/no1Btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/congrats_msg"
             app:layout_constraintLeft_toRightOf="@id/yes1Btn"

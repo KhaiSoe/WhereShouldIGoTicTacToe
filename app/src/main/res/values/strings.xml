@@ -18,6 +18,8 @@
     <string name="play">PLAY</string>
     <string name="player2Symbol">O</string>
     <string name="exit">Exit</string>
+    <string name="auto_play">Auto Play</string>
+    <string name="exit_msg">Would you like to exit the game?</string>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.pursuit.tictactoe
+package com.pursuit.tictactoe.main
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -11,18 +11,26 @@ import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
+import com.pursuit.tictactoe.R
+import com.pursuit.tictactoe.results.Result2Activity
+import com.pursuit.tictactoe.results.ResultActivity
+import com.pursuit.tictactoe.results.TieActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class AutoPlayActivity : AppCompatActivity(), MainContract {
+
+    var player1 = ArrayList<Int>()
+    var player2 = ArrayList<Int>()
+    var activePlayer = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
 
-        exit.setOnClickListener { finishAffinity() }
-
-
+        exit.setOnClickListener {
+            showDialogExit(getString(R.string.exit_msg))
+        }
     }
 
     fun buClick(view: View) {
@@ -39,27 +47,49 @@ class MainActivity : AppCompatActivity() {
             R.id.button7 -> cellID = 7
             R.id.button8 -> cellID = 8
             R.id.button9 -> cellID = 9
-
         }
-
         playGame(cellID, buSelected)
-
     }
 
-    var player1 = ArrayList<Int>()
-    var player2 = ArrayList<Int>()
-    var activePlayer = 1
+    private fun autoPlay() {
+
+        val emptyCells = ArrayList<Int>()
+        for (cellId in 1..9) {
+            if (player1.contains(cellId) || player2.contains(cellId)) {
+            } else {
+                emptyCells.add(cellId)
+            }
+        }
+
+        val r = java.util.Random()
+        val randomIndex = r.nextInt(emptyCells.size - 0) + 0
+        val cellId = emptyCells[randomIndex]
+
+        val buSelect: Button?
+        buSelect = when (cellId) {
+            1 -> button1
+            2 -> button2
+            3 -> button3
+            4 -> button4
+            5 -> button5
+            6 -> button6
+            7 -> button7
+            8 -> button8
+            9 -> button9
+            else -> button1
+        }
+        playGame(cellId, buSelect)
+    }
 
     @SuppressLint("ResourceAsColor")
-    private fun playGame(cellID: Int, buSelected: Button) {
+    override fun playGame(cellID: Int, buSelected: Button) {
 
         if (activePlayer == 1) {
             buSelected.text = getString(R.string.player1Symbol)
             buSelected.setBackgroundColor(Color.parseColor("#F8CF2C"))
             player1.add(cellID)
             activePlayer = 2
-            //autoPlay()
-
+            autoPlay()
         } else {
             buSelected.text = getString(R.string.player2Symbol)
             buSelected.setBackgroundColor(Color.parseColor("#90ADC6"))
@@ -67,12 +97,29 @@ class MainActivity : AppCompatActivity() {
             activePlayer = 1
         }
         buSelected.isEnabled = false
-
         checkWinner()
-
     }
 
-    private fun checkWinner() {
+    private fun showDialogExit(title: String) {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.custom_dialog1)
+        val body = dialog.findViewById(R.id.congrats_msg) as TextView
+        body.text = title
+        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
+        val noBtn = dialog.findViewById(R.id.noBtn) as TextView
+        yesBtn.setOnClickListener {
+            finishAffinity()
+        }
+        noBtn.setOnClickListener {
+            dialog.dismiss()
+            autoPlay()
+        }
+        dialog.show()
+    }
+
+    override fun checkWinner() {
         var winner = -1
 
         //row1
@@ -105,8 +152,6 @@ class MainActivity : AppCompatActivity() {
             winner = 2
         }
 
-
-        // col 2
         if (player1.contains(2) && player1.contains(5) && player1.contains(8)) {
             winner = 1
         }
@@ -114,7 +159,6 @@ class MainActivity : AppCompatActivity() {
             winner = 2
         }
 
-        // col 3
         if (player1.contains(3) && player1.contains(6) && player1.contains(9)) {
             winner = 1
         }
@@ -187,81 +231,30 @@ class MainActivity : AppCompatActivity() {
             winner = 3
         }
 
-        if (player1.contains(3) && player1.contains(4) && player1.contains(5) && player1.contains(8) && player1.contains(9) &&
+        if (player1.contains(3) && player1.contains(4) && player1.contains(5) && player1.contains(8) && player1.contains(
+                9
+            ) &&
             player2.contains(1) && player2.contains(2) && player2.contains(6) && player2.contains(7)
         ) {
             winner = 3
         }
 
-        if (player2.contains(3) && player2.contains(4) && player2.contains(5) && player2.contains(8) && player2.contains(9) &&
+        if (player2.contains(3) && player2.contains(4) && player2.contains(5) && player2.contains(8) && player2.contains(
+                9
+            ) &&
             player1.contains(1) && player1.contains(2) && player1.contains(6) && player1.contains(7)
         ) {
             winner = 3
         }
 
-
         if (winner != -1) {
             when (winner) {
-                1 -> startActivity(Intent(this@MainActivity, ResultActivity::class.java))
-                2 -> startActivity(Intent(this@MainActivity, Result2Activity::class.java))
-                3 -> startActivity(Intent(this@MainActivity, TieActivity::class.java))
-            }
-
-        }
-    }
-
-    private fun showDialogTie(title: String) {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.custom_dialog1)
-        val body = dialog.findViewById(R.id.congrats_msg) as TextView
-        body.text = title
-        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
-        val noBtn = dialog.findViewById(R.id.noBtn) as TextView
-        yesBtn.setOnClickListener {
-            dialog.dismiss()
-            finish()
-        }
-        noBtn.setOnClickListener {
-            dialog.dismiss()
-            finish()
-        }
-        dialog.show()
-
-    }
-
-    private fun autoPlay() {
-        val emptyCells = ArrayList<Int>()
-        for (cellID in 1..9) {
-            if (!(player1.contains(cellID) || player2.contains(cellID))) {
-                emptyCells.add(cellID)
+                1 -> startActivity(Intent(this@AutoPlayActivity, ResultActivity::class.java))
+                2 -> startActivity(Intent(this@AutoPlayActivity, Result2Activity::class.java))
+                3 -> startActivity(Intent(this@AutoPlayActivity, TieActivity::class.java))
             }
         }
-
-        val r = java.util.Random()
-        val randIndex = r.nextInt(emptyCells.size - 0) + 0
-        val cellID = emptyCells[randIndex]
-
-        var buSelected: Button
-        when (cellID) {
-            1 -> buSelected = button1
-            2 -> buSelected = button2
-            3 -> buSelected = button3
-            4 -> buSelected = button4
-            5 -> buSelected = button5
-            6 -> buSelected = button6
-            7 -> buSelected = button7
-            8 -> buSelected = button8
-            9 -> buSelected = button9
-            else -> buSelected = button1
-
-        }
-
-        playGame(cellID, buSelected)
-
     }
-
-
 }
+
 

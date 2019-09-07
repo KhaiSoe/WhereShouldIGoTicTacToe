@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/tttbackground"
-        tools:context=".TieActivity">
+        tools:context=".results.TieActivity">
 
     <ImageView
             android:id="@+id/tie"
@@ -22,8 +22,6 @@
 
     <TextView
             android:id="@+id/congrats3_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tie"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -34,8 +32,6 @@
 
     <Button
             android:id="@+id/yes3Btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/congrats3_msg"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -47,8 +43,6 @@
 
     <Button
             android:id="@+id/no3Btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/congrats3_msg"
             app:layout_constraintLeft_toRightOf="@id/yes3Btn"
