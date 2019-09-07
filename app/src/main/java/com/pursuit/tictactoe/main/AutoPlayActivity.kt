@@ -16,9 +16,8 @@ import com.pursuit.tictactoe.results.Result2Activity
 import com.pursuit.tictactoe.results.ResultActivity
 import com.pursuit.tictactoe.results.TieActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(), MainContract {
+class AutoPlayActivity : AppCompatActivity(), MainContract {
 
     var player1 = ArrayList<Int>()
     var player2 = ArrayList<Int>()
@@ -30,9 +29,8 @@ class MainActivity : AppCompatActivity(), MainContract {
         setContentView(R.layout.activity_main)
 
         exit.setOnClickListener {
-            showDialogTie(getString(R.string.exit_msg))
+            showDialogExit(getString(R.string.exit_msg))
         }
-
     }
 
     fun buClick(view: View) {
@@ -50,9 +48,37 @@ class MainActivity : AppCompatActivity(), MainContract {
             R.id.button8 -> cellID = 8
             R.id.button9 -> cellID = 9
         }
-
         playGame(cellID, buSelected)
+    }
 
+    private fun autoPlay() {
+
+        val emptyCells = ArrayList<Int>()
+        for (cellId in 1..9) {
+            if (player1.contains(cellId) || player2.contains(cellId)) {
+            } else {
+                emptyCells.add(cellId)
+            }
+        }
+
+        val r = java.util.Random()
+        val randomIndex = r.nextInt(emptyCells.size - 0) + 0
+        val cellId = emptyCells[randomIndex]
+
+        val buSelect: Button?
+        buSelect = when (cellId) {
+            1 -> button1
+            2 -> button2
+            3 -> button3
+            4 -> button4
+            5 -> button5
+            6 -> button6
+            7 -> button7
+            8 -> button8
+            9 -> button9
+            else -> button1
+        }
+        playGame(cellId, buSelect)
     }
 
     @SuppressLint("ResourceAsColor")
@@ -63,7 +89,7 @@ class MainActivity : AppCompatActivity(), MainContract {
             buSelected.setBackgroundColor(Color.parseColor("#F8CF2C"))
             player1.add(cellID)
             activePlayer = 2
-
+            autoPlay()
         } else {
             buSelected.text = getString(R.string.player2Symbol)
             buSelected.setBackgroundColor(Color.parseColor("#90ADC6"))
@@ -71,9 +97,26 @@ class MainActivity : AppCompatActivity(), MainContract {
             activePlayer = 1
         }
         buSelected.isEnabled = false
-
         checkWinner()
+    }
 
+    private fun showDialogExit(title: String) {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.custom_dialog1)
+        val body = dialog.findViewById(R.id.congrats_msg) as TextView
+        body.text = title
+        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
+        val noBtn = dialog.findViewById(R.id.noBtn) as TextView
+        yesBtn.setOnClickListener {
+            finishAffinity()
+        }
+        noBtn.setOnClickListener {
+            dialog.dismiss()
+            autoPlay()
+        }
+        dialog.show()
     }
 
     override fun checkWinner() {
@@ -206,32 +249,12 @@ class MainActivity : AppCompatActivity(), MainContract {
 
         if (winner != -1) {
             when (winner) {
-                1 -> startActivity(Intent(this@MainActivity, ResultActivity::class.java))
-                2 -> startActivity(Intent(this@MainActivity, Result2Activity::class.java))
-                3 -> startActivity(Intent(this@MainActivity, TieActivity::class.java))
+                1 -> startActivity(Intent(this@AutoPlayActivity, ResultActivity::class.java))
+                2 -> startActivity(Intent(this@AutoPlayActivity, Result2Activity::class.java))
+                3 -> startActivity(Intent(this@AutoPlayActivity, TieActivity::class.java))
             }
-
         }
     }
-
-    private fun showDialogTie(title: String) {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.custom_dialog1)
-        val body = dialog.findViewById(R.id.congrats_msg) as TextView
-        body.text = title
-        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
-        val noBtn = dialog.findViewById(R.id.noBtn) as TextView
-        yesBtn.setOnClickListener {
-            finishAffinity()
-        }
-        noBtn.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialog.show()
-
-    }
-
 }
+
 

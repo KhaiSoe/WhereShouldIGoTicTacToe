@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
+import com.pursuit.tictactoe.main.AutoPlayActivity
 import com.pursuit.tictactoe.main.MainActivity
 import kotlinx.android.synthetic.main.activity_rules.*
 
@@ -19,7 +20,9 @@ class RulesActivity : AppCompatActivity() {
         play.setOnClickListener {
             startActivity(Intent(this@RulesActivity, MainActivity::class.java))
         }
-
+        auto_play.setOnClickListener {
+            startActivity(Intent(this@RulesActivity, AutoPlayActivity::class.java))
+        }
 
     }
 

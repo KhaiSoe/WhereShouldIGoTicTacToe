@@ -9,6 +9,8 @@
             android:roundIcon="@drawable/x"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".main.AutoPlayActivity">
+        </activity>
         <activity android:name=".results.TieActivity">
         </activity>
         <activity android:name=".RulesActivity">

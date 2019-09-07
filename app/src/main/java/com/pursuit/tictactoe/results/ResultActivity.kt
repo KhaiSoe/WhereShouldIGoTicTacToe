@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.animation.AnimationUtils
 import com.pursuit.tictactoe.main.MainActivity
 import com.pursuit.tictactoe.R
+import com.pursuit.tictactoe.RulesActivity
 import kotlinx.android.synthetic.main.activity_result.*
 
 class ResultActivity : AppCompatActivity() {
@@ -17,9 +18,8 @@ class ResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_result)
 
         startAnimation()
-        yes1Btn.setOnClickListener { startActivity(Intent(this@ResultActivity, MainActivity::class.java)) }
+        yes1Btn.setOnClickListener { startActivity(Intent(this@ResultActivity, RulesActivity::class.java)) }
         no1Btn.setOnClickListener { finishAffinity() }
-
     }
 
     private fun startAnimation() {
@@ -27,5 +27,5 @@ class ResultActivity : AppCompatActivity() {
         win.startAnimation(animation)
     }
 
-
 }
+

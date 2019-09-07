@@ -20,22 +20,15 @@
 
     <TextView
             android:id="@+id/rules_body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rule_text"
             style="@style/ruleBodyStyle"
-            android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@id/play"
             app:layout_constraintTop_toBottomOf="@id/rules_id"
     />
 
-
     <Button
             android:id="@+id/play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/play"
             style="@style/buttonStyle"
@@ -43,13 +36,10 @@
             app:layout_constraintLeft_toRightOf="@id/auto_play"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-
     />
 
     <Button
             android:id="@+id/auto_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/auto_play"
             style="@style/buttonStyle"
             app:layout_constraintTop_toBottomOf="@id/rules_body"

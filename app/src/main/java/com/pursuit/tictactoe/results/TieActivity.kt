@@ -5,8 +5,8 @@ import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
-import com.pursuit.tictactoe.main.MainActivity
 import com.pursuit.tictactoe.R
+import com.pursuit.tictactoe.RulesActivity
 import kotlinx.android.synthetic.main.activity_tie.*
 
 class TieActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class TieActivity : AppCompatActivity() {
         setContentView(R.layout.activity_tie)
 
         startAnimation()
-        yes3Btn.setOnClickListener { startActivity(Intent(this@TieActivity, MainActivity::class.java)) }
+        yes3Btn.setOnClickListener { startActivity(Intent(this@TieActivity, RulesActivity::class.java)) }
         no3Btn.setOnClickListener { finishAffinity() }
     }
 
@@ -26,3 +26,4 @@ class TieActivity : AppCompatActivity() {
         tie.startAnimation(animation)
     }
 }
+
