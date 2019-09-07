@@ -33,7 +33,7 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
         }
     }
 
-    fun buClick(view: View) {
+    fun butClick2(view: View) {
         val buSelected = view as Button
         var cellID = 0
 
@@ -49,6 +49,26 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
             R.id.button9 -> cellID = 9
         }
         playGame(cellID, buSelected)
+    }
+
+
+    @SuppressLint("ResourceAsColor")
+    override fun playGame(cellID: Int, buSelected: Button) {
+
+        if (activePlayer == 1) {
+            buSelected.text = getString(R.string.player1Symbol)
+            buSelected.setBackgroundColor(Color.parseColor("#F8CF2C"))
+            player1.add(cellID)
+            activePlayer = 2
+            autoPlay()
+        } else {
+            buSelected.text = getString(R.string.player2Symbol)
+            buSelected.setBackgroundColor(Color.parseColor("#90ADC6"))
+            player2.add(cellID)
+            activePlayer = 1
+        }
+        buSelected.isEnabled = false
+        checkWinner()
     }
 
     private fun autoPlay() {
@@ -81,25 +101,6 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
         playGame(cellId, buSelect)
     }
 
-    @SuppressLint("ResourceAsColor")
-    override fun playGame(cellID: Int, buSelected: Button) {
-
-        if (activePlayer == 1) {
-            buSelected.text = getString(R.string.player1Symbol)
-            buSelected.setBackgroundColor(Color.parseColor("#F8CF2C"))
-            player1.add(cellID)
-            activePlayer = 2
-            autoPlay()
-        } else {
-            buSelected.text = getString(R.string.player2Symbol)
-            buSelected.setBackgroundColor(Color.parseColor("#90ADC6"))
-            player2.add(cellID)
-            activePlayer = 1
-        }
-        buSelected.isEnabled = false
-        checkWinner()
-    }
-
     private fun showDialogExit(title: String) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -114,7 +115,7 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
         }
         noBtn.setOnClickListener {
             dialog.dismiss()
-            autoPlay()
+
         }
         dialog.show()
     }
