@@ -50,8 +50,26 @@ class MainActivity : AppCompatActivity(), MainContract {
             R.id.button8 -> cellID = 8
             R.id.button9 -> cellID = 9
         }
-
         playGame(cellID, buSelected)
+
+    }
+
+    private fun showDialogTie(title: String) {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.custom_dialog1)
+        val body = dialog.findViewById(R.id.congrats_msg) as TextView
+        body.text = title
+        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
+        val noBtn = dialog.findViewById(R.id.noBtn) as TextView
+        yesBtn.setOnClickListener {
+            finishAffinity()
+        }
+        noBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
 
     }
 
@@ -63,6 +81,7 @@ class MainActivity : AppCompatActivity(), MainContract {
             buSelected.setBackgroundColor(Color.parseColor("#F8CF2C"))
             player1.add(cellID)
             activePlayer = 2
+            //autoPlay()
 
         } else {
             buSelected.text = getString(R.string.player2Symbol)
@@ -212,25 +231,6 @@ class MainActivity : AppCompatActivity(), MainContract {
             }
 
         }
-    }
-
-    private fun showDialogTie(title: String) {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setCancelable(false)
-        dialog.setContentView(R.layout.custom_dialog1)
-        val body = dialog.findViewById(R.id.congrats_msg) as TextView
-        body.text = title
-        val yesBtn = dialog.findViewById(R.id.yesBtn) as Button
-        val noBtn = dialog.findViewById(R.id.noBtn) as TextView
-        yesBtn.setOnClickListener {
-            finishAffinity()
-        }
-        noBtn.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialog.show()
-
     }
 
 }

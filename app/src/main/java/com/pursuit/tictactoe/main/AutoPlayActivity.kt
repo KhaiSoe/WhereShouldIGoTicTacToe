@@ -15,7 +15,17 @@ import com.pursuit.tictactoe.R
 import com.pursuit.tictactoe.results.Result2Activity
 import com.pursuit.tictactoe.results.ResultActivity
 import com.pursuit.tictactoe.results.TieActivity
+import kotlinx.android.synthetic.main.activity_autoplay.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.button1
+import kotlinx.android.synthetic.main.activity_main.button2
+import kotlinx.android.synthetic.main.activity_main.button3
+import kotlinx.android.synthetic.main.activity_main.button4
+import kotlinx.android.synthetic.main.activity_main.button5
+import kotlinx.android.synthetic.main.activity_main.button6
+import kotlinx.android.synthetic.main.activity_main.button7
+import kotlinx.android.synthetic.main.activity_main.button8
+import kotlinx.android.synthetic.main.activity_main.button9
 
 class AutoPlayActivity : AppCompatActivity(), MainContract {
 
@@ -26,12 +36,13 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_autoplay)
 
-        exit.setOnClickListener {
+        exit2.setOnClickListener {
             showDialogExit(getString(R.string.exit_msg))
         }
     }
+
 
     fun butClick2(view: View) {
         val buSelected = view as Button
