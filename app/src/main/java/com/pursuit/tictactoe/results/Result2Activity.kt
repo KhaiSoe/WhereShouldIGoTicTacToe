@@ -4,8 +4,8 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.animation.AnimationUtils
-import com.pursuit.tictactoe.main.MainActivity
 import com.pursuit.tictactoe.R
 import com.pursuit.tictactoe.RulesActivity
 import kotlinx.android.synthetic.main.activity_result2.*
@@ -26,6 +26,10 @@ class Result2Activity : AppCompatActivity() {
     private fun startAnimation() {
         val animation = AnimationUtils.loadAnimation(applicationContext, R.anim.scale_anim)
         win2.startAnimation(animation)
+    }
+
+    override fun onBackPressed() {
+        Snackbar.make(result2,getString(R.string.back_press_msg),Snackbar.LENGTH_SHORT).show()
     }
 }
 
