@@ -23,6 +23,7 @@
     <string name="exit_msg">Would you like to exit the game?</string>
     <string name="play_msg">With a friend.</string>
     <string name="auto_play_msg">Without a friend.</string>
+    <string name="back_press_msg">Back press disabled!</string>
 
 
 </resources>

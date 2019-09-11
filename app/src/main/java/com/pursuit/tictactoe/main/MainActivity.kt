@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -16,13 +17,13 @@ import com.pursuit.tictactoe.results.Result2Activity
 import com.pursuit.tictactoe.results.ResultActivity
 import com.pursuit.tictactoe.results.TieActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(), MainContract {
 
     var player1 = ArrayList<Int>()
     var player2 = ArrayList<Int>()
     var activePlayer = 1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,7 +82,6 @@ class MainActivity : AppCompatActivity(), MainContract {
             buSelected.setBackgroundColor(Color.parseColor("#F8CF2C"))
             player1.add(cellID)
             activePlayer = 2
-            //autoPlay()
 
         } else {
             buSelected.text = getString(R.string.player2Symbol)
@@ -229,8 +229,11 @@ class MainActivity : AppCompatActivity(), MainContract {
                 2 -> startActivity(Intent(this@MainActivity, Result2Activity::class.java))
                 3 -> startActivity(Intent(this@MainActivity, TieActivity::class.java))
             }
-
         }
+    }
+
+    override fun onBackPressed() {
+        Snackbar.make(play,getString(R.string.back_press_msg),Snackbar.LENGTH_SHORT).show()
     }
 
 }

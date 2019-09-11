@@ -7,6 +7,7 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -16,16 +17,6 @@ import com.pursuit.tictactoe.results.Result2Activity
 import com.pursuit.tictactoe.results.ResultActivity
 import com.pursuit.tictactoe.results.TieActivity
 import kotlinx.android.synthetic.main.activity_autoplay.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.button1
-import kotlinx.android.synthetic.main.activity_main.button2
-import kotlinx.android.synthetic.main.activity_main.button3
-import kotlinx.android.synthetic.main.activity_main.button4
-import kotlinx.android.synthetic.main.activity_main.button5
-import kotlinx.android.synthetic.main.activity_main.button6
-import kotlinx.android.synthetic.main.activity_main.button7
-import kotlinx.android.synthetic.main.activity_main.button8
-import kotlinx.android.synthetic.main.activity_main.button9
 
 class AutoPlayActivity : AppCompatActivity(), MainContract {
 
@@ -49,15 +40,15 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
         var cellID = 0
 
         when (buSelected.id) {
-            R.id.button1 -> cellID = 1
-            R.id.button2 -> cellID = 2
-            R.id.button3 -> cellID = 3
-            R.id.button4 -> cellID = 4
-            R.id.button5 -> cellID = 5
-            R.id.button6 -> cellID = 6
-            R.id.button7 -> cellID = 7
-            R.id.button8 -> cellID = 8
-            R.id.button9 -> cellID = 9
+            R.id.button11 -> cellID = 11
+            R.id.button12 -> cellID = 12
+            R.id.button13 -> cellID = 13
+            R.id.button14 -> cellID = 14
+            R.id.button15 -> cellID = 15
+            R.id.button16 -> cellID = 16
+            R.id.button17 -> cellID = 17
+            R.id.button18 -> cellID = 18
+            R.id.button19 -> cellID = 19
         }
         playGame(cellID, buSelected)
     }
@@ -85,7 +76,7 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
     private fun autoPlay() {
 
         val emptyCells = ArrayList<Int>()
-        for (cellId in 1..9) {
+        for (cellId in 11..19) {
             if (player1.contains(cellId) || player2.contains(cellId)) {
             } else {
                 emptyCells.add(cellId)
@@ -98,16 +89,16 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
 
         val buSelect: Button?
         buSelect = when (cellId) {
-            1 -> button1
-            2 -> button2
-            3 -> button3
-            4 -> button4
-            5 -> button5
-            6 -> button6
-            7 -> button7
-            8 -> button8
-            9 -> button9
-            else -> button1
+            11 -> button11
+            12 -> button12
+            13 -> button13
+            14 -> button14
+            15 -> button15
+            16 -> button16
+            17 -> button17
+            18 -> button18
+            19 -> button19
+            else -> button11
         }
         playGame(cellId, buSelect)
     }
@@ -135,126 +126,126 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
         var winner = -1
 
         //row1
-        if (player1.contains(1) && player1.contains(2) && player1.contains(3)) {
+        if (player1.contains(11) && player1.contains(12) && player1.contains(13)) {
             winner = 1
         }
-        if (player2.contains(1) && player2.contains(2) && player2.contains(3)) {
+        if (player2.contains(11) && player2.contains(12) && player2.contains(13)) {
             winner = 2
         }
 
-        if (player1.contains(4) && player1.contains(5) && player1.contains(6)) {
+        if (player1.contains(14) && player1.contains(15) && player1.contains(16)) {
             winner = 1
         }
-        if (player2.contains(4) && player2.contains(5) && player2.contains(6)) {
+        if (player2.contains(14) && player2.contains(15) && player2.contains(16)) {
             winner = 2
         }
 
-        if (player1.contains(7) && player1.contains(8) && player1.contains(9)) {
+        if (player1.contains(17) && player1.contains(18) && player1.contains(19)) {
             winner = 1
         }
-        if (player2.contains(7) && player2.contains(8) && player2.contains(9)) {
+        if (player2.contains(17) && player2.contains(18) && player2.contains(19)) {
             winner = 2
         }
 
         // col 1
-        if (player1.contains(1) && player1.contains(4) && player1.contains(7)) {
+        if (player1.contains(11) && player1.contains(14) && player1.contains(17)) {
             winner = 1
         }
-        if (player2.contains(1) && player2.contains(4) && player2.contains(7)) {
+        if (player2.contains(11) && player2.contains(14) && player2.contains(17)) {
             winner = 2
         }
 
-        if (player1.contains(2) && player1.contains(5) && player1.contains(8)) {
+        if (player1.contains(12) && player1.contains(15) && player1.contains(18)) {
             winner = 1
         }
-        if (player2.contains(2) && player2.contains(5) && player2.contains(8)) {
+        if (player2.contains(12) && player2.contains(15) && player2.contains(18)) {
             winner = 2
         }
 
-        if (player1.contains(3) && player1.contains(6) && player1.contains(9)) {
+        if (player1.contains(13) && player1.contains(16) && player1.contains(19)) {
             winner = 1
         }
-        if (player2.contains(3) && player2.contains(6) && player2.contains(9)) {
+        if (player2.contains(13) && player2.contains(16) && player2.contains(19)) {
             winner = 2
         }
 
         //diagonal
-        if (player1.contains(1) && player1.contains(5) && player1.contains(9)) {
+        if (player1.contains(11) && player1.contains(15) && player1.contains(19)) {
             winner = 1
         }
-        if (player2.contains(1) && player2.contains(5) && player2.contains(9)) {
+        if (player2.contains(11) && player2.contains(15) && player2.contains(19)) {
             winner = 2
         }
 
-        if (player1.contains(3) && player1.contains(5) && player1.contains(7)) {
+        if (player1.contains(13) && player1.contains(15) && player1.contains(17)) {
             winner = 1
         }
-        if (player2.contains(3) && player2.contains(5) && player2.contains(7)) {
+        if (player2.contains(13) && player2.contains(15) && player2.contains(17)) {
             winner = 2
         }
 
         //draw
 
-        if (player1.contains(2) && player1.contains(5) && player1.contains(9) &&
-            player2.contains(1) && player2.contains(3) && player2.contains(8)
+        if (player1.contains(12) && player1.contains(15) && player1.contains(19) &&
+            player2.contains(11) && player2.contains(13) && player2.contains(18)
         ) {
             winner = 3
         }
 
-        if (player2.contains(2) && player2.contains(5) && player2.contains(9) &&
-            player1.contains(1) && player1.contains(3) && player1.contains(8)
+        if (player2.contains(12) && player2.contains(15) && player2.contains(19) &&
+            player1.contains(11) && player1.contains(13) && player1.contains(18)
         ) {
             winner = 3
         }
 
-        if (player1.contains(2) && player1.contains(5) && player1.contains(6) &&
-            player2.contains(1) && player2.contains(3) && player2.contains(4)
+        if (player1.contains(12) && player1.contains(15) && player1.contains(16) &&
+            player2.contains(11) && player2.contains(13) && player2.contains(14)
         ) {
             winner = 3
         }
 
-        if (player2.contains(2) && player2.contains(5) && player2.contains(6) &&
-            player1.contains(1) && player1.contains(3) && player1.contains(4)
+        if (player2.contains(12) && player2.contains(15) && player2.contains(16) &&
+            player1.contains(11) && player1.contains(13) && player1.contains(14)
         ) {
             winner = 3
         }
 
-        if (player1.contains(1) && player1.contains(5) && player1.contains(6) &&
-            player2.contains(3) && player2.contains(4) && player2.contains(9)
+        if (player1.contains(11) && player1.contains(15) && player1.contains(16) &&
+            player2.contains(13) && player2.contains(14) && player2.contains(19)
         ) {
             winner = 3
         }
 
-        if (player2.contains(1) && player2.contains(5) && player2.contains(6) &&
-            player1.contains(3) && player1.contains(4) && player1.contains(9)
+        if (player2.contains(11) && player2.contains(15) && player2.contains(16) &&
+            player1.contains(13) && player1.contains(14) && player1.contains(19)
         ) {
             winner = 3
         }
 
-        if (player1.contains(3) && player1.contains(4) && player1.contains(6) &&
-            player2.contains(1) && player2.contains(6) && player2.contains(7)
+        if (player1.contains(13) && player1.contains(14) && player1.contains(16) &&
+            player2.contains(11) && player2.contains(16) && player2.contains(17)
         ) {
             winner = 3
         }
 
-        if (player2.contains(3) && player2.contains(4) && player2.contains(5) &&
-            player1.contains(1) && player1.contains(6) && player1.contains(7)
+        if (player2.contains(13) && player2.contains(14) && player2.contains(15) &&
+            player1.contains(11) && player1.contains(16) && player1.contains(17)
         ) {
             winner = 3
         }
 
-        if (player1.contains(3) && player1.contains(4) && player1.contains(5) && player1.contains(8) && player1.contains(
-                9
+        if (player1.contains(13) && player1.contains(14) && player1.contains(15) && player1.contains(18) && player1.contains(
+                19
             ) &&
-            player2.contains(1) && player2.contains(2) && player2.contains(6) && player2.contains(7)
+            player2.contains(11) && player2.contains(12) && player2.contains(16) && player2.contains(17)
         ) {
             winner = 3
         }
 
-        if (player2.contains(3) && player2.contains(4) && player2.contains(5) && player2.contains(8) && player2.contains(
-                9
+        if (player2.contains(13) && player2.contains(14) && player2.contains(15) && player2.contains(18) && player2.contains(
+                19
             ) &&
-            player1.contains(1) && player1.contains(2) && player1.contains(6) && player1.contains(7)
+            player1.contains(11) && player1.contains(12) && player1.contains(16) && player1.contains(17)
         ) {
             winner = 3
         }
@@ -266,6 +257,10 @@ class AutoPlayActivity : AppCompatActivity(), MainContract {
                 3 -> startActivity(Intent(this@AutoPlayActivity, TieActivity::class.java))
             }
         }
+    }
+
+    override fun onBackPressed() {
+        Snackbar.make(autoPlay, getString(R.string.back_press_msg), Snackbar.LENGTH_SHORT).show()
     }
 }
 
